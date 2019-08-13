@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  apt: name={{item}} state=present update_cache=true
+  with_items:
+    - python-pip
+    - python-dev
+    - python-pexpect
+    - libffi-dev
+    - libssl-dev
+  become: yes

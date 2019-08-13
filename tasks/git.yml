@@ -1,0 +1,33 @@
+---
+  - name: Create elastalert directory
+    file:
+      path: /opt/{{ ea_dir }}
+      state: directory
+      mode: 0755
+    become: yes
+
+  - name: Clone elastalert
+    git:
+      repo: "{{ ea_git }}"
+      dest: /opt/{{ ea_dir }}
+    become: yes
+
+  - name: Create rules directory
+    file:
+      path: /opt/{{ ea_dir }}/rules
+      state: directory
+      mode: 0755
+    become: yes
+
+  - name: Clone rules
+    git:
+      repo: "{{ rules_git }}"
+      dest: /opt/{{ ea_dir }}/rules
+    become: yes
+
+  - name: Copy config
+    template: src=config.yaml dest=/opt/{{ ea_dir }}
+    become: yes
+
+  - name: Set permission to folder
+    file: dest=/opt/{{ ea_dir }} owner=ubuntu group=ubuntu mode=u=rwX,g=rX,o=rX recurse=yes
