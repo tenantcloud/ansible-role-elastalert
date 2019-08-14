@@ -12,3 +12,4 @@
   - name: Create index
     command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
     become: yes
+    tags: skip_ansible_lint

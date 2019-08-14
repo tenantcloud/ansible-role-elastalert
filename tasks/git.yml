@@ -11,6 +11,7 @@
       repo: "{{ ea_git }}"
       dest: /opt/{{ ea_dir }}
     become: yes
+    tags: skip_ansible_lint
 
   - name: Create rules directory
     file:
@@ -24,6 +25,7 @@
       repo: "{{ rules_git }}"
       dest: /opt/{{ ea_dir }}/rules
     become: yes
+    tags: skip_ansible_lint
 
   - name: Copy config
     template: src=config.yaml dest=/opt/{{ ea_dir }}
