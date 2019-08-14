@@ -8,15 +8,6 @@
     pip:
       requirements: /opt/{{ ea_dir }}/requirements.txt
 
-  - name: Wait for Elasticsearch to become ready
-    uri:
-      url: "{{ logstash_elasticsearch_hosts }}"
-      status_code: 200
-    register: result
-    until: result.status == 200
-    retries: 15
-    delay: 10
-
   - name: Create index
     command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
     tags: skip_ansible_lint
