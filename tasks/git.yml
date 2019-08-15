@@ -23,3 +23,7 @@
   - name: Copy config
     template: src=config.yaml dest=/opt/{{ ea_dir }}
     become: yes
+
+  - name: Copy elasticsearch config
+    template: src=elasticsearch.yml dest=/etc/elasticsearch
+    become: yes
