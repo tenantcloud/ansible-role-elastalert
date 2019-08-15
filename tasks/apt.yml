@@ -4,7 +4,6 @@
   with_items:
     - python-pip
     - python-dev
-    - python-pexpect
     - libffi-dev
     - libssl-dev
   become: yes

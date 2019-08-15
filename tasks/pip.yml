@@ -4,6 +4,11 @@
       name: elastalert
     become: yes
 
+  - name: Install pexpect
+    pip:
+      name: pexpect
+    become: yes
+
   - name: Install requirements
     pip:
       requirements: /opt/{{ ea_dir }}/requirements.txt
