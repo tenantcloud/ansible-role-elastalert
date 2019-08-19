@@ -21,3 +21,17 @@
   - name: Create index
     command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
     tags: skip_ansible_lint
+
+  - name: Copy supervisor config
+    template:
+      src: elastalert.conf
+      dest: /etc/supervisor/con.f/elastalert.conf
+    become: yes
+
+  - name: Update supervisor
+    command: supervisorctl update
+    become: yes
+
+  - name: Restart supervisor
+    command: supervisorctl restart all
+    become: yes
