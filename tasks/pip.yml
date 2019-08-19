@@ -25,7 +25,7 @@
   - name: Copy supervisor config
     template:
       src: elastalert.conf
-      dest: /etc/supervisor/con.f/elastalert.conf
+      dest: /etc/supervisor/conf.d/elastalert.conf
     become: yes
 
   - name: Restart supervisor
