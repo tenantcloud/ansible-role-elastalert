@@ -28,10 +28,8 @@
       dest: /etc/supervisor/con.f/elastalert.conf
     become: yes
 
-  - name: Update supervisor
-    command: supervisorctl update
-    become: yes
-
   - name: Restart supervisor
-    command: supervisorctl restart all
+    supervisorctl:
+      name: elastalert
+      state: restarted
     become: yes
