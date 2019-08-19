@@ -9,9 +9,15 @@
       name: pexpect
     become: yes
 
+  - name: Install elasticsearch
+    pip:
+      name: elasticsearch
+    become: yes
+
   - name: Install requirements
     pip:
       requirements: /opt/{{ ea_dir }}/requirements.txt
+      executable: pip-3.7
 
   - name: Create index
     command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
