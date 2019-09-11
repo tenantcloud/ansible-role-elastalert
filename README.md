@@ -31,14 +31,16 @@ Dependencies
 Example Playbook
 ----------------
 
-  - hosts: localhost
-    vars:
-      ea_dir: elastalert
-      ea_git: https://github.com/Yelp/elastalert.git
-      rules_git: git@bitbucket.org:tenantcloud/elastalert.git
-    become: yes
-    roles:
-      - tenantcloud.ansible_role_elastalert
+```yaml
+- hosts: localhost
+  vars:
+    ea_dir: elastalert
+    ea_git: https://github.com/Yelp/elastalert.git
+    rules_git: git@bitbucket.org:tenantcloud/elastalert.git
+  become: yes
+  roles:
+    - tenantcloud.ansible_role_elastalert
+```
 
 License
 -------
