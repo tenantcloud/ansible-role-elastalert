@@ -1,35 +1,35 @@
 ---
-  - name: Install elastalert
-    pip:
-      name: elastalert
-    become: yes
+- name: Install elastalert
+  pip:
+    name: elastalert
+  become: true
 
-  - name: Install pexpect
-    pip:
-      name: pexpect
-    become: yes
+- name: Install pexpect
+  pip:
+    name: pexpect
+  become: true
 
-  - name: Install elasticsearch
-    pip:
-      name: elasticsearch
-    become: yes
+- name: Install elasticsearch
+  pip:
+    name: elasticsearch
+  become: true
 
-  - name: Install requirements
-    pip:
-      requirements: /opt/{{ ea_dir }}/requirements.txt
+- name: Install requirements
+  pip:
+    requirements: /opt/{{ea_dir}}/requirements.txt
 
-  - name: Create index
-    command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
-    tags: skip_ansible_lint
+- name: Create index
+  command: "{{create_index}} --config /opt/{{ea_dir}}/config.yaml"
+  tags: skip_ansible_lint
 
-  - name: Copy supervisor config
-    template:
-      src: elastalert.conf
-      dest: /etc/supervisor/conf.d/elastalert.conf
-    become: yes
+- name: Copy supervisor config
+  template:
+    src: elastalert.conf
+    dest: /etc/supervisor/conf.d/elastalert.conf
+  become: true
 
-  - name: Restart supervisor
-    supervisorctl:
-      name: elastalert
-      state: restarted
-    become: yes
+- name: Restart supervisor
+  supervisorctl:
+    name: elastalert
+    state: restarted
+  become: true
