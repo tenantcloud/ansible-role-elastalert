@@ -25,5 +25,5 @@
   become: true
 
 - name: Copy elasticsearch config
-  template: src=elasticsearch.yml.tpl dest=/etc/elasticsearch.yml
+  template: src=elasticsearch.yml.tpl dest=/etc/elasticsearch/elasticsearch.yml
   become: true
