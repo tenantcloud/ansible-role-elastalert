@@ -1,1 +1,6 @@
 ---
+create_index: "elastalert-create-index \
+               --host localhost \
+               --port 9200 \
+               --no-ssl \
+               --index elastalert"

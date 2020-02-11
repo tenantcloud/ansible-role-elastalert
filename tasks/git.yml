@@ -21,9 +21,9 @@
   become: true
 
 - name: Copy config
-  template: src=config.yaml dest=/opt/{{ ea_dir }}
+  template: src=config.yaml.tpl dest=/opt/{{ ea_dir }}/config.yaml
   become: true
 
 - name: Copy elasticsearch config
-  template: src=elasticsearch.yml dest=/etc/elasticsearch
+  template: src=elasticsearch.yml.tpl dest=/etc/elasticsearch.yml
   become: true

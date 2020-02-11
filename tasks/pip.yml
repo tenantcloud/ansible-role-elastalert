@@ -19,7 +19,7 @@
     requirements: /opt/{{ ea_dir }}/requirements.txt
 
 - name: Create index
-  command: elastalert-create-index --host localhost --port 9200 --no-ssl --index elastalert --config /opt/{{ ea_dir }}/config.yaml
+  command: "{{ create_index }} --config /opt/{{ ea_dir }}/config.yaml"
   tags: skip_ansible_lint
 
 - name: Copy supervisor config
