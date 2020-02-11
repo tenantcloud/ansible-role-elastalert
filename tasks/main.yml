@@ -1,4 +1,4 @@
 ---
-    - include: apt.yml
-    - include: git.yml
-    - include: pip.yml
+- include: apt.yml
+- include: git.yml
+- include: pip.yml
