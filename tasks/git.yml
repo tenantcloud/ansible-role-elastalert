@@ -24,12 +24,12 @@
   template:
     src: 'config.yaml.tpl'
     dest: '/opt/{{ ea_dir }}/config.yaml'
-    mode: 0600
+    mode: 0644
   become: true
 
 - name: Copy elasticsearch config
   template:
     src: 'elasticsearch.yml.tpl'
     dest: '/etc/elasticsearch/elasticsearch.yml'
-    mode: 0600
+    mode: 0660
   become: true
