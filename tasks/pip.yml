@@ -1,4 +1,10 @@
 ---
+# TODO:
+# fix jira python module:
+# pip3 uninstall jira
+# pip3 install jira=2.0.0
+# because we have an error in the version that is installed
+
 - name: Install elastalert
   pip:
     name: elastalert
@@ -26,6 +32,7 @@
   template:
     src: elastalert.conf
     dest: /etc/supervisor/conf.d/elastalert.conf
+    mode: 0644
   become: true
 
 - name: Restart supervisor

@@ -1,4 +1,7 @@
-tenantcloud.ansible_role_elastalert
+
+![Lint Ansible Roles](https://github.com/tenantcloud/ansible-role-elastalert/workflows/Lint%20Ansible%20Roles/badge.svg)
+
+tenantcloud.elastalert
 =========
 
 Ansible role for install and setup elastalert module to sending alerts to Slack. This role include in default terraform scenario for auto-deploy new server.
@@ -24,9 +27,9 @@ Dependencies
 ------------
 
   - geerlingguy.java
-  - geerlingguy.elasticsearch
-  - geerlingguy.kibana
-  - geerlingguy.logstash
+  - tenantcloud.elasticsearch
+  - tenantcloud.kibana
+  - tenantcloud.logstash
 
 Example Playbook
 ----------------
@@ -39,7 +42,7 @@ Example Playbook
     rules_git: git@bitbucket.org:tenantcloud/elastalert.git
   become: yes
   roles:
-    - tenantcloud.ansible_role_elastalert
+    - tenantcloud.elastalert
 ```
 
 License
