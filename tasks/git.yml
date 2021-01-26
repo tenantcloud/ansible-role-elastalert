@@ -10,20 +10,26 @@
   git:
     repo: "{{ ea_git }}"
     dest: /opt/{{ ea_dir }}
-  tags: skip_ansible_lint
+    version: master
   become: true
 
 - name: Clone rules
   git:
     repo: "{{ rules_git }}"
     dest: /opt/{{ ea_dir }}/rules
-  tags: skip_ansible_lint
+    version: master
   become: true
 
 - name: Copy config
-  template: src=config.yaml.tpl dest=/opt/{{ ea_dir }}/config.yaml
+  template:
+    src: 'config.yaml.tpl'
+    dest: '/opt/{{ ea_dir }}/config.yaml'
+    mode: 0644
   become: true
 
 - name: Copy elasticsearch config
-  template: src=elasticsearch.yml.tpl dest=/etc/elasticsearch/elasticsearch.yml
+  template:
+    src: 'elasticsearch.yml.tpl'
+    dest: '/etc/elasticsearch/elasticsearch.yml'
+    mode: 0660
   become: true
